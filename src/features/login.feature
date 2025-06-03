@@ -2,7 +2,7 @@
 Feature: Login system
 
     Background: 
-        Given user navigates to the application "https://hrm.anhtester.com/erp/login"
+        Given user navigates to the application "https://hrm.anhtester.com"
 
     Scenario Outline: Login with valid credentials
         When user enter username "<username>" and password "<password>"
@@ -11,9 +11,9 @@ Feature: Login system
     
     Examples: Login with different credentials
         | username          | password         | expected_result                |
-        | admin_example     | 123456           | user redirects dashboard       |
-        | admin_example     | wrong_password   | system display error message   |
-        | admin_example     |                  | display alert                  |
+        | mikegay123           | 123456           | user redirects dashboard       |
+        | mikegay123          | wrong_password   | system display error message   |
+        | mikegay123           |                  | display alert                  |
 
     Scenario Outline: Login with only username
         When user enter username "<username>"
@@ -21,6 +21,6 @@ Feature: Login system
         Then <expected_result>
 
     Examples:
-        | email                     | expected_result           |
-        | admin_example             | display input password    |
+        | username                 | expected_result           |
+        | mikegay123                  | display input password    |
         |                           | display alert1            |

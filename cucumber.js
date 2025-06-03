@@ -15,4 +15,4 @@ module.exports = {
         defaultNavigationTimeout: 45000
       }
     }
-  };
+};
