@@ -1,16 +1,19 @@
 import { type Page } from '@playwright/test';
+import { BasePage } from './base/BasePage';
 import{LoginSelector} from '../selectors/LoginSelector';
 import { click, type, isVisible, waitForLoad, navigate } from '../../common/actionHelpers';
 
-export class LoginPage{
+export class LoginPage extends BasePage {
     private selectors: LoginSelector;
 
     constructor(page: Page) {
+        super(page);
         this.selectors = new LoginSelector(page);
     }
 
     async goto(url: string) {
         await navigate(this.selectors.page, url);
+        await this.validateUrl('erp/login');
         await isVisible(this.selectors.usernameInput);
         await isVisible(this.selectors.passwordInput);
     }
