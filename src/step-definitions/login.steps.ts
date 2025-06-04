@@ -34,16 +34,21 @@ Then('system display error message', async function() {
 });
 
 Then('display alert', async function() {
-    const alertMessage = await loginPage.getErrorMessage();
+    const alertMessage = await loginPage.getInputPasswordMessage();
     await expect(alertMessage).toBeVisible();
 });
 
 Then('display input password', async function() {
-    const passwordInput = await loginPage.getErrorMessage();
+    const passwordInput = await loginPage.getInputPasswordMessage();
     await expect(passwordInput).toBeVisible();
 });
 
 Then('display alert1', async function() {
-    const alertMessage = await loginPage.getErrorMessage();
+    const alertMessage = await loginPage.getInputUsernameMessage();
     await expect(alertMessage).toBeVisible();
+});
+
+Then('account invalid', async function() {
+    const invalidAccountMessage = await loginPage.getInvalidAccountMessage();
+    await expect(invalidAccountMessage).toBeVisible();
 });

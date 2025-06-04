@@ -22,3 +22,8 @@ export async function navigate(page: Page, url: string): Promise<void> {
     await page.goto(url);
     await waitForLoad(page);
 }
+
+export async function isEnabled(locator: Locator): Promise<void> {
+    await locator.waitFor();
+    await expect(locator).toBeEnabled();
+}

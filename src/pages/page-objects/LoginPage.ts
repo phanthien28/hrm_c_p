@@ -1,6 +1,6 @@
 import { type Page } from '@playwright/test';
 import { BasePage } from './base/BasePage';
-import{LoginSelector} from '../selectors/LoginSelector';
+import{ LoginSelector } from '../selectors/LoginSelector';
 import { click, type, isVisible, waitForLoad, navigate } from '../../common/actionHelpers';
 
 export class LoginPage extends BasePage {
@@ -13,7 +13,6 @@ export class LoginPage extends BasePage {
 
     async goto(url: string) {
         await navigate(this.selectors.page, url);
-        await this.validateUrl('erp/login');
         await isVisible(this.selectors.usernameInput);
         await isVisible(this.selectors.passwordInput);
     }
@@ -43,5 +42,20 @@ export class LoginPage extends BasePage {
     async getErrorMessage() {
         await isVisible(this.selectors.errorMessage);
         return this.selectors.errorMessage;
+    }
+
+    async getInputUsernameMessage() {
+        await isVisible(this.selectors.inputUsernameMessage);
+        return this.selectors.inputUsernameMessage;
+    }
+
+    async getInputPasswordMessage() {
+        await isVisible(this.selectors.inputPasswordMessage);
+        return this.selectors.inputPasswordMessage;
+    }
+
+    async getInvalidAccountMessage() {
+        await isVisible(this.selectors.invalidAccountMessage);
+        return this.selectors.invalidAccountMessage;
     }
 }

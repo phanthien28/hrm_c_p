@@ -1,4 +1,5 @@
 import { Page, expect } from '@playwright/test';
+import dotenv from 'dotenv'
 
 export class BasePage {
     protected page: Page;
@@ -6,7 +7,7 @@ export class BasePage {
 
     constructor(page: Page) {
         this.page = page;
-        this.baseUrl = 'https://hrm.anhtester.com';  // URL cơ sở của ứng dụng
+        this.baseUrl = process.env.BASE_URL || 'https://hrm.anhtester.com'; // Fallback URL if env not set
     }
 
     /**
