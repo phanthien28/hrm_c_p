@@ -2,8 +2,6 @@ import {BeforeAll, AfterAll, Before, After, setDefaultTimeout, BeforeStep, After
 import { Browser, BrowserContext, chromium, Page } from '@playwright/test';
 import { LoginPage } from '../pages/page-objects/LoginPage';
 import { Authentication} from './authentication';
-import * as dotenv from 'dotenv';
-import path from 'path';
 
 let browser: Browser;
 let context: BrowserContext;
