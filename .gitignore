@@ -2,4 +2,3 @@
 # Playwright
 node_modules/
 auth.json
-test-results/
