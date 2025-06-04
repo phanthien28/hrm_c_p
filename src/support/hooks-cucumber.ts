@@ -2,8 +2,6 @@ import {BeforeAll, AfterAll, Before, After, setDefaultTimeout, BeforeStep, After
 import { Browser, BrowserContext, chromium, Page } from '@playwright/test';
 import { LoginPage } from '../pages/page-objects/LoginPage';
 import { Authentication} from './authentication';
-import * as dotenv from 'dotenv';
-import path from 'path';
 
 let browser: Browser;
 let context: BrowserContext;
@@ -15,7 +13,7 @@ setDefaultTimeout(60 * 1000);
 BeforeAll(async function() {
 
     browser = await chromium.launch({
-        headless: false, // Set to true for headless mode
+        headless: true, // Set to true for headless mode
         //args: [ '--start-maximized' ],
         args: ['--window-size=1920,1080','--start-maximized'],
     });
