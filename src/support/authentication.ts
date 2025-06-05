@@ -1,12 +1,15 @@
 import { LoginPage } from '../pages/page-objects/LoginPage';
+import { Page, BrowserContext } from '@playwright/test';
+import { BasePage } from '../pages/page-objects/base/BasePage';
 import * as dotenv from 'dotenv';
-import { BrowserContext } from '@playwright/test';
 import path from 'path';
 
 // Load environment variables once
+const environment = process.env.ENV || 'local';
+
 dotenv.config({ 
-    path: path.resolve(__dirname, '../../env/.env.local'),
-    override: true // Force override any existing env vars
+    path: path.resolve(__dirname, `../../env/.env.${environment}`), 
+    override: true 
 });
 
 // Validate environment variables
@@ -17,10 +20,12 @@ requiredVars.forEach(varName => {
     }
 });
 
-export class Authentication {
+
+export class Authentication extends BasePage {
     private loginPage: LoginPage;
 
-    constructor(private page: any, private context: BrowserContext) {
+    constructor(page: Page, private context: BrowserContext) {
+        super(page);
         this.loginPage = new LoginPage(page);
     }
 
@@ -29,10 +34,11 @@ export class Authentication {
         await this.loginPage.enterUsername(username);
         await this.loginPage.enterPassword(password);
         await this.loginPage.clickLoginButton();
-        // Update URL pattern to match your app
-        await this.page.waitForURL('**/erp/desk**', { waitUntil: 'domcontentloaded', timeout: 40000 });
-        await this.page.waitForLoadState('networkidle', { timeout: 40000 }); // Wait for network to be idle
-        await this.page.waitForLoadState('domcontentloaded', { timeout: 40000 }); // Wait for DOM content
-        await this.page.waitForLoadState('load', { timeout: 40000 }); // Wait for full page load
+        
+        await this.page.waitForLoadState('load', { timeout: 40000 });
+        await this.page.waitForLoadState('networkidle', { timeout: 40000 });
+
+        
+        await this.validateUrl('/erp/desk');
     }
 }

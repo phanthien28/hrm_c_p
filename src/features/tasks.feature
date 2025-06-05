@@ -12,13 +12,13 @@ Feature: Task Management
     Then task should be saved successfully
     And task should be displayed in the task list
 
-#   Scenario: Edit an existing task
+#   Scenario: Edit task
 #     Given a task with title "Complete project report" exists
 #     When the user edits the task to change the title to "Complete project report - Final Draft"
 #     Then the task should be updated successfully
 #     And the updated title should appear in the task list
 
-#   Scenario: Delete a task
+#   Scenario: Delete task
 #     Given a task with title "Complete project report - Final Draft" exists
 #     When the user deletes the task
 #     Then the task should be removed from the task list

@@ -11,11 +11,13 @@ let isFirstRun = true;
 setDefaultTimeout(60 * 1000);
 
 BeforeAll(async function() {
-
     browser = await chromium.launch({
-        headless: true, // Set to true for headless mode
-        //args: [ '--start-maximized' ],
-        args: ['--window-size=1920,1080','--start-maximized'],
+        headless: false,
+        args: [
+            '--start-maximized',
+            '--window-size=1920,1080',
+            '--window-position=0,0'
+        ]
     });
 });
 
@@ -49,7 +51,7 @@ Before({tags: '@task'}, async function() {
             });
             
             page = await context.newPage();
-            await page.setViewportSize({ width: 1920, height: 1080 });
+           // await page.setViewportSize({ width: 1920, height: 1080 });
             
             this.context = context;
             this.page = page;
@@ -69,7 +71,7 @@ Before({tags: '@task'}, async function() {
             // Subsequent runs - reuse saved state
             try {
                 context = await browser.newContext({
-                    viewport: { width: 1920, height: 1080 },
+                    viewport: null,
                     storageState: 'auth.json'
                 });
                 
