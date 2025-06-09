@@ -20,6 +20,11 @@ requiredVars.forEach(varName => {
     }
 });
 
+export const credentials = {
+    username: process.env.USERNAME,
+    password: process.env.PASSWORD
+};
+
 
 export class Authentication extends BasePage {
     private loginPage: LoginPage;
