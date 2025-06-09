@@ -1,11 +1,10 @@
 import { Given, When, Then } from "@cucumber/cucumber";
 import { expect, Page } from "@playwright/test";
 import { TaskPage } from "../pages/page-objects/TaskPage";
-import { NavigationPage } from "../pages/page-objects/NavigationPage";
+import { BasePage } from "../pages/page-objects/base/BasePage";
 
 let taskPage: TaskPage;
-let navigationPage: NavigationPage;
-
+let basePage: BasePage;
 Given('user is logged in', async function () {
     taskPage = new TaskPage(this.page);
     await this.page.waitForURL('**/erp/desk', { timeout: 15000 });
@@ -13,8 +12,8 @@ Given('user is logged in', async function () {
 });
 
 Given('user has access to the task management system', async function () {
-    navigationPage = new NavigationPage(this.page);
-    await navigationPage.clickTasks();
+    basePage = new BasePage(this.page);
+    await basePage.selectSideMenuOfTheLeft('Tasks');
     await this.page.waitForURL('**/my-tasks-list', { timeout: 15000 });
     await expect(this.page).toHaveURL(/.*\/erp\/my-tasks-list/);
 });

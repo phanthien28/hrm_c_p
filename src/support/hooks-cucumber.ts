@@ -12,7 +12,7 @@ setDefaultTimeout(60 * 1000);
 
 BeforeAll(async function() {
     browser = await chromium.launch({
-        headless: true,
+        headless: false, // Set to true for headless mode
         args: [
             '--start-maximized',
             '--window-size=1920,1080',
@@ -38,7 +38,7 @@ Before({tags: '@login'}, async function() {
     }
 });
 
-Before({tags: '@task'}, async function() {
+Before({tags: '@task or @profile'}, async function() {
     try {
         if (isFirstRun) {
             const username = process.env.USERNAME;

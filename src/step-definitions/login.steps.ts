@@ -2,6 +2,7 @@ import {Given, When, Then} from '@cucumber/cucumber';
 import {expect} from '@playwright/test';
 import {LoginPage} from '../pages/page-objects/LoginPage';
 
+
 let loginPage: LoginPage;
 
 Given('user navigates to the application {string}', async function(url: string){

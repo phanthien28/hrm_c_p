@@ -1,9 +1,12 @@
-import { Page, expect } from '@playwright/test';
+import { type Locator, type Page, expect } from '@playwright/test';
 
 
 export class BasePage {
-    protected page: Page;
-    protected baseUrl: string;
+    public page: Page;
+    public baseUrl: string;
+
+    //pending
+   // protected saveButton: string = "//span[contains(text(), 'Save')]";
 
     constructor(page: Page) {
         this.page = page;
@@ -29,5 +32,11 @@ export class BasePage {
      //Wait for page load state
     async waitForPageLoad() {
         await this.page.waitForLoadState('load');
+    }
+
+    //click Sidebar menu item
+    async selectSideMenuOfTheLeft(tabName: string) {
+        const menuTitle: Locator = this.page.getByRole('link', { name: tabName });
+        await menuTitle.click();
     }
 }

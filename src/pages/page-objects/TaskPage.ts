@@ -12,6 +12,7 @@ export class TaskPage extends BasePage {
     }
 
     async clickAddNewTask() {
+        await this.validateUrl('/erp/my-tasks-list');
         await click(this.selectors.addNewTaskButton);
         await isVisible(this.selectors.tilte);
     }

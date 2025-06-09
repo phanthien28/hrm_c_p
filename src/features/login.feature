@@ -8,7 +8,7 @@ Feature: Login system
         When user enter username "<username>" and password "<password>"
         And user click login button
         Then <expected_result>
-    
+  
     Examples: Login with different credentials
         | username             | password         | expected_result                |
         | mikegay123           | 123456           | user redirects dashboard       |
