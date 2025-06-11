@@ -2,9 +2,9 @@ pipeline {
     agent any
     
     environment {
-        HRM_URL = "${env.URL}"
-        HRM_USERNAME = "${env.USERNAME}" 
-        HRM_PASSWORD = credentials('hrm-password')
+        URL = "${env.URL}"
+        USERNAME = "${env.USERNAME}" 
+        PASSWORD = credentials('hrm-password')
         //HEADLESS = 'true'
     }
 
