@@ -41,9 +41,9 @@ Before({tags: '@login'}, async function() {
 Before({tags: '@task or @profile'}, async function() {
     try {
         if (isFirstRun) {
-            const username = process.env.USERNAME;
-            const password = process.env.PASSWORD;
-            const url = process.env.URL;
+            const username = process.env.HRM_USERNAME;
+            const password = process.env.HRM_PASSWORD;
+            const url = process.env.HRM_URL;
 
             // First run - perform login and save state
             context = await browser.newContext({

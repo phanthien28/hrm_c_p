@@ -13,7 +13,8 @@ dotenv.config({
 });
 
 // Validate environment variables
-const requiredVars = ['URL', 'USERNAME', 'PASSWORD'];
+const requiredVars = ['HRM_URL', 'HRM_USERNAME', 'HRM_PASSWORD'];
+
 requiredVars.forEach(varName => {
     if (!process.env[varName]) {
         throw new Error(`Missing required environment variable: ${varName}`);
@@ -21,8 +22,8 @@ requiredVars.forEach(varName => {
 });
 
 export const credentials = {
-    username: process.env.USERNAME,
-    password: process.env.PASSWORD
+    username: process.env.HRM_USERNAME,
+    password: process.env.HRM_PASSWORD
 };
 
 
@@ -35,7 +36,7 @@ export class Authentication extends BasePage {
     }
 
     async login(username: string, password: string) {
-        await this.loginPage.goto(process.env.URL!);
+        await this.loginPage.goto(process.env.HRM_URL!);
         await this.loginPage.enterUsername(username);
         await this.loginPage.enterPassword(password);
         await this.loginPage.clickLoginButton();
