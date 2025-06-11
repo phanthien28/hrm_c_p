@@ -12,7 +12,7 @@ setDefaultTimeout(60 * 1000);
 
 BeforeAll(async function() {
     browser = await chromium.launch({
-        headless: false, // Set to true for headless mode
+        headless: true, // Set to true for headless mode
         args: [
             '--start-maximized',
             '--window-size=1920,1080',
