@@ -12,7 +12,7 @@ setDefaultTimeout(60 * 1000);
 
 BeforeAll(async function() {
     browser = await chromium.launch({
-        headless: true, // Set to true for headless mode
+        headless: false, // Set to true for headless mode
         args: [
             '--start-maximized',
             '--window-size=1920,1080',
@@ -60,7 +60,7 @@ Before({tags: '@task or @profile'}, async function() {
 
             // Login and save state
             await page.goto(url!);
-            await this.auth.login(username, password);
+            await this.auth.login(username, password);//
             await page.waitForLoadState('networkidle');
             
             // Save state after successful login
@@ -76,7 +76,7 @@ Before({tags: '@task or @profile'}, async function() {
                 });
                 
                 page = await context.newPage();
-                await page.goto(process.env.BASE_URL!);
+                await page.goto('https://hrm.anhtester.com/erp/desk'); // Adjust URL as needed
                 await page.waitForLoadState('networkidle');
                 
                 this.context = context;

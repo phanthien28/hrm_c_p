@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "cucumber-js",
+    "report": "node report.js",
+    "test:report": "npm run test && npm run report",
     "test:staging": "cross-env TEST_ENV=staging cucumber-js",
     "test:prod": "cross-env TEST_ENV=prod cucumber-js"
   },

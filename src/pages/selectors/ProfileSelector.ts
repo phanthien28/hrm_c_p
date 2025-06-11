@@ -12,8 +12,7 @@ export class ProfileSelector {
         this.firstNameInput = page.locator('input[type="text"][name="first_name"]');
         this.countryInput = page.locator("//div[@class = 'col-md-8']//span[@class = 'select2-selection__rendered']");
         this.countryDropdownItem = (countryName: string) => page.locator(`//li[contains(text(), '${countryName}')]`);
-        this.saveButton = page.locator("//span[contains(text(), 'Save')]");
+        this.saveButton = page.locator("//div[@class = 'card-body']//div[@class = 'card-footer text-right']//span[@class = 'ladda-label']");
     }
-
 
 }

@@ -42,7 +42,7 @@ export class TaskPage extends BasePage {
     }
 
     async chooseProject(projectName: string) {
-        await click(this.selectors.project);
+        await click(this.selectors.projectInput);
         await isVisible(this.selectors.projectDropdownItem(projectName));
         await click(this.selectors.projectDropdownItem(projectName));
     }
@@ -55,13 +55,26 @@ export class TaskPage extends BasePage {
         await type(this.selectors.description, description);
     }
 
-    async clickSaveButton() {
-        await isVisible(this.selectors.saveButton);
-        await click(this.selectors.saveButton);
-        await waitForLoad(this.page);
+    // async clickSaveButton() {
+    //     await isVisible(this.selectors.saveButton);
+    //     await click(this.selectors.saveButton);
+    //     await waitForLoad(this.page);
+    // }
+
+    async clickViewDetailButton() {
+        await isVisible(this.selectors.viewDetailButton);
+        await click(this.selectors.viewDetailButton);
     }
 
+    async clickEditButton() {
+        await isVisible(this.selectors.editButton);
+        await click(this.selectors.editButton);
+    }
 
+    async clickDeleteButton() {
+        await isVisible(this.selectors.deleteButton);
+        await click(this.selectors.deleteButton);
+    }
 
     //funtion create new task
     async createNewTask(taskData: any) {
@@ -73,18 +86,32 @@ export class TaskPage extends BasePage {
         await this.chooseProject(taskData['Project Name']);
         await this.enterSummary(taskData['Summary']);
         //await this.enterDescription(taskData['Description']);
-        await this.clickSaveButton();
+        await this.clickSubmitButton('Save');
         await waitForLoad(this.page);
     }
 
-    async getaddednewMessage() {
-        await isVisible(this.selectors.addednewMessage);
-        return this.selectors.addednewMessage;
-    }
+    // async getaddednewMessage() {
+    //     await isVisible(this.selectors.addednewMessage);
+    //     return this.selectors.addednewMessage;
+    // }
 
     async getTaskInList() {
         await isVisible(this.selectors.taskInList);
         return this.selectors.taskInList;
     }
 
+    async editTask(title: string, hours: string) {
+        await this.clickViewDetailButton();
+        await this.clickEditButton();
+        await this.enterTitle(title);
+        await this.enterEstimatedHours(hours);
+        await this.clickSubmitButton('Update');
+        await waitForLoad(this.page);
+    }
+
+    async deleteTask() {
+        await this.clickDeleteButton();
+        await this.clickSubmitButton('Confirm');
+        await waitForLoad(this.page);
+    }
 }

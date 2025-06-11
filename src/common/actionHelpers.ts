@@ -5,9 +5,9 @@ export async function click(locator: Locator): Promise<void> {
     await locator.click();
 }
 
-export async function type(locator: Locator, text: string): Promise<void> {
+export async function type(locator: Locator, value: string): Promise<void> {
     await locator.waitFor();
-    await locator.fill(text);
+    await locator.fill(value);
 }
 
 export async function isVisible(locator: Locator): Promise<void> {

@@ -18,3 +18,12 @@ Given('user has access to the account settings page', async function () {
     await this.page.waitForURL('**/my-profile', { timeout: 15000 });
     await expect(this.page).toHaveURL(/.*\/erp\/my-profile/);
 });
+
+When('user changes the First Name and Country and user clicks the Save button', async function (dataTable) {
+    const profileData = dataTable.hashes()[0];
+    await profilePage.updateProfile(profileData);
+})
+
+Then('the profile information should be updated successfully', async function () {
+    await profilePage.verifyToastMessage('Personal Information updated.');
+})

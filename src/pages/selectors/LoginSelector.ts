@@ -13,8 +13,8 @@ export class LoginSelector {
 
     constructor(page: Page) {
         this.page = page;
-        this.usernameInput = page.locator("#iusername");
-        this.passwordInput = page.locator("#ipassword");
+        this.usernameInput = page.locator("//input[@id = 'iusername']");
+        this.passwordInput = page.locator("//input[@id = 'ipassword']");
         this.loginButton = page.locator("button[type='submit']");
         this.errorMessage = page.locator("div[class='toast toast-error']");
         this.inputUsernameMessage = page.locator("//div[@class='toast-message' and contains(text(), 'The username field is required.')]");

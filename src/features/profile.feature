@@ -5,8 +5,7 @@ Feature: Account Settings
     And user has access to the account settings page
 
     Scenario: Update profile information
-        When user changes the First Name and Country:
-        | First Name | Country       |
-        | John       | United States |
-        And user clicks the Save button
+        When user changes the First Name and Country and user clicks the Save button
+        | First Name | Country        |
+        | John       | United Kingdom |
         Then the profile information should be updated successfully

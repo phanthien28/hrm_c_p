@@ -2,18 +2,18 @@ import { LoginPage } from '../pages/page-objects/LoginPage';
 import { Page, BrowserContext } from '@playwright/test';
 import { BasePage } from '../pages/page-objects/base/BasePage';
 import * as dotenv from 'dotenv';
-//import path from 'path';
+import path from 'path';
 
 // Load environment variables once
-// const environment = process.env.ENV || 'local';
+const environment = process.env.ENV || 'local';
 
-// dotenv.config({ 
-//     path: path.resolve(__dirname, `../../env/.env.${environment}`), 
-//     override: true 
-// });
+dotenv.config({ 
+    path: path.resolve(__dirname, `../../env/.env.${environment}`), 
+    override: true 
+});
 
 // Validate environment variables
-const requiredVars = ['URL', 'USERNAME', 'HRM_PASSWORD'];
+const requiredVars = ['URL', 'USERNAME', 'PASSWORD'];
 requiredVars.forEach(varName => {
     if (!process.env[varName]) {
         throw new Error(`Missing required environment variable: ${varName}`);
@@ -22,7 +22,7 @@ requiredVars.forEach(varName => {
 
 export const credentials = {
     username: process.env.USERNAME,
-    password: process.env.HRM_PASSWORD
+    password: process.env.PASSWORD
 };
 
 
