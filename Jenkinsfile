@@ -39,11 +39,11 @@ pipeline {
             mail(
                 to: 'Jenkins <phanthothien204@gmail.com>',
                 subject: 'E2E Test Result',
-                body: 'Pass: ',
+                body: 'Pass:',
                 cc: 'thien.210213@tbd.edu.vn',
                 bcc: '',
                 from: '',
-                replyTo: '', /
+                replyTo: '',
                 mimeType: 'text/html', 
                 attachments: 'reports/cucumber-report.html'
             )
