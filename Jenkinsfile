@@ -44,7 +44,7 @@ pipeline {
                 from: '',
                 replyTo: '',
                 mimeType: 'text/html', 
-                attachments: '.reports/cucumber-report.html'
+                attachments: './reports/cucumber-report.html'
             )
             cleanWs()
         }
