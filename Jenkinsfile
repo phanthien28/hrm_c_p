@@ -28,7 +28,7 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'npx cucumber-js'
+                sh 'npx cucumber-js --format html:reports/cucumber-report.html'
             }
         }
     }
@@ -44,7 +44,7 @@ pipeline {
                 from: '',
                 replyTo: '',
                 mimeType: 'text/html', 
-                attachments: './reports/cucumber-report.html'
+                attachmentsPattern: './reports/cucumber-report.html'
             )
             cleanWs()
         }
