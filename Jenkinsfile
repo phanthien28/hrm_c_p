@@ -35,7 +35,6 @@ pipeline {
     
     post {
         always {
-            cleanWs()
             mail(
                 to: 'Jenkins <phanthothien204@gmail.com>',
                 subject: 'E2E Test Result',
@@ -45,8 +44,10 @@ pipeline {
                 from: '',
                 replyTo: '',
                 mimeType: 'text/html', 
-                attachments: 'reports/cucumber-report.html'
+                attachments: 'html:reports/cucumber-report.html'
             )
+
+            cleanWs()
         }
         
         success {
