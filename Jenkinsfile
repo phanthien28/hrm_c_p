@@ -43,9 +43,9 @@ pipeline {
                 cc: 'thien.210213@tbd.edu.vn',
                 bcc: '',
                 from: '',
-                replyTo: '',
-                mimeType: 'text/html',
-                attachments: 'reports/cucumber-report.html' // <-- Sử dụng đường dẫn này
+                replyTo: '', /
+                mimeType: 'text/html', 
+                attachments: 'reports/cucumber-report.html'
             )
         }
         
