@@ -7,6 +7,7 @@ module.exports = {
       paths: ['src/features/**/*.feature'],
       format: [
         '@cucumber/pretty-formatter',
+         'html:reports/cucumber-report.html',
       ],
       //publishQuiet: true,
       parallel: 1,

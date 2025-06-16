@@ -35,6 +35,18 @@ pipeline {
     
     post {
         always {
+             mail bcc: '',
+                 body: """
+                    Test Execution Summary:
+                    Job Name: hrm
+                    Build Number: ${env.BUILD_NUMBER}
+                    Build URL: ${env.HRM_URL}
+                 """,
+                 cc: '',
+                 from: '',
+                 replyTo: '',
+                 subject: 'E2E Test Result',
+                 to: 'phanthothien204@gmail.com'
             cleanWs()
         }
         
