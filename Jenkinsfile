@@ -43,6 +43,8 @@ pipeline {
                 bcc: '',
                 from: '',
                 replyTo: '',
+                mimeType: 'text/html', 
+                attachments: 'html:reports/cucumber-report.html'
             )
             cleanWs()
         }
