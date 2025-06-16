@@ -35,19 +35,18 @@ pipeline {
     
     post {
         always {
-             mail bcc: '',
-                 body: """
-                    Test Execution Summary:
-                    Job Name: hrm
-                    Build Number: ${env.BUILD_NUMBER}
-                    Build URL: ${env.HRM_URL}
-                 """,
-                 cc: '',
-                 from: '',
-                 replyTo: '',
-                 subject: 'E2E Test Result',
-                 to: 'phanthothien204@gmail.com'
             cleanWs()
+            mail(
+                to: 'Jenkins <phanthothien204@gmail.com>',
+                subject: 'E2E Test Result',
+                body: 'Pass: ',
+                cc: 'thien.210213@tbd.edu.vn',
+                bcc: '',
+                from: '',
+                replyTo: ''
+                attachmentsPattern: '**/reports/cucumber-report.html',
+                mimeType: 'text/html'
+            )
         }
         
         success {
