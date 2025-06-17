@@ -8,7 +8,7 @@ module.exports = {
       format: [
         '@cucumber/pretty-formatter',
         //'html:reports/cucumber-report.html',
-        //'allure-cucumberjs:reports/allure-results'
+        './allure-reporter.js'
       ],
       //publishQuiet: true,
       parallel: 1,
