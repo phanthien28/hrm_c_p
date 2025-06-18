@@ -1,63 +1,3 @@
-// pipeline {
-//     agent any
-    
-//     environment {
-//         HRM_URL = "${env.URL}"
-//         HRM_USERNAME = "${env.USERNAME}" 
-//         HRM_PASSWORD = credentials('hrm-password')
-//         //HEADLESS = 'true'
-//     }
-
-//     tools {
-//         nodejs 'NodeJS'
-//     }
-
-//     stages {
-//         stage('Checkout') {
-//             steps {
-//                 checkout scm
-//             }
-//         }
-
-//         stage('Install Dependencies') {
-//             steps {
-//                 sh 'npm ci'
-//                 sh 'npx playwright install'
-//             }
-//         }
-
-//         stage('Run Tests') {
-//             steps {
-//                 sh 'npx cucumber-js'
-//             }
-//         }
-//     }
-    
-//     post {
-//         always {
-//             mail(
-//                 to: 'Jenkins <phanthothien204@gmail.com>',
-//                 subject: 'E2E Test Result',
-//                 body: 'Pass:',
-//                 cc: 'thien.210213@tbd.edu.vn',
-//                 bcc: '',
-//                 from: '',
-//                 replyTo: '',
-//             )
-//             cleanWs()
-//         }
-        
-//         success {
-//             echo 'Pipeline executed successfully!'
-//         }
-        
-//         failure {
-//             echo 'Pipeline execution failed!'
-//         }
-//     }
-// }
-
-
 pipeline {
     agent any
     
@@ -65,12 +5,12 @@ pipeline {
         HRM_URL = "${env.URL}"
         HRM_USERNAME = "${env.USERNAME}" 
         HRM_PASSWORD = credentials('hrm-password')
-        ALLURE_REPORT_URL = "${env.BUILD_URL}allure" // Tạo URL cho báo cáo Allure
+        ALLURE_REPORT_URL = "${env.BUILD_URL}allure" // Create URL for Allure report
     }
-
+    // 1. install environment
     tools {
         nodejs 'NodeJS'
-        allure 'allure' // Sử dụng Allure tool đã cấu hình
+        allure 'allure'
     }
 
     stages {
@@ -79,27 +19,27 @@ pipeline {
                 checkout scm
             }
         }
-
+        // 2. Install dependencies
         stage('Install Dependencies') {
             steps {
                 sh 'npm ci'
                 sh 'npx playwright install'
             }
         }
-
+        // 3. Run tests
         stage('Run Tests') {
             steps {
-                // Tạo thư mục allure-results
+                // Create folder allure-results
                 sh 'mkdir -p allure-results'
                 
-                // Chạy tests với Allure reporter
+                // Run tests and generate Allure results
                 sh 'npx cucumber-js'
             }
         }
         
         stage('Generate Allure Report') {
             steps {
-                // Tạo báo cáo Allure
+                // Create Allure report from results
                 allure([
                     includeProperties: false, 
                     jdk: '', 
@@ -107,7 +47,7 @@ pipeline {
                     results: [[path: 'allure-results']]
                 ])
                 
-                // Lưu URL báo cáo để sử dụng trong email
+                // Save URL report using to email
                 script {
                     env.ALLURE_REPORT_URL = "${env.BUILD_URL}allure"
                 }
@@ -117,7 +57,7 @@ pipeline {
     
     post {
         always {
-            // Gửi email với URL báo cáo Allure
+            // Send email with Allure report
             mail(
                 to: 'Jenkins <phanthothien204@gmail.com>',
                 subject: "E2E Test Result: ${currentBuild.currentResult}",

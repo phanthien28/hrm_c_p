@@ -51,7 +51,7 @@ Before({tags: '@task or @profile'}, async function() {
             });
             
             page = await context.newPage();
-           // await page.setViewportSize({ width: 1920, height: 1080 });
+            // await page.setViewportSize({ width: 1920, height: 1080 });
             
             this.context = context;
             this.page = page;

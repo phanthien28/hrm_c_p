@@ -12,14 +12,10 @@ export class TaskSelector {
     readonly projectDropdownItem: (projectName: string) => Locator; 
     readonly summary: Locator;
     readonly description: Locator;
-    //readonly saveButton: Locator;
-   // readonly addednewMessage: Locator;
     readonly taskInList: Locator;
     readonly viewDetailButton: Locator;
     readonly editButton: Locator;
-   // readonly updateButton: Locator;
     readonly deleteButton: Locator;
-   // readonly confirmDeleteButton: Locator;
 
     constructor(page: Page) {
         this.page = page;
@@ -37,14 +33,11 @@ export class TaskSelector {
 
         this.description = page.locator("//iframe[@class='k-content']"); //pending
 
-        //this.saveButton = page.locator("//span[contains(text(), 'Save')]");
-        //this.addednewMessage = page.locator("//div[@class='toast-message' and contains(text(), 'Task added.')]");
         this.taskInList = page.locator("//td[contains(text(), 'Write testcase loginpage')]");
 
         this.viewDetailButton = page.locator("//td[@class= 'sorting_1' and contains(text(), 'Write test script')]//button[@class = 'btn icon-btn btn-sm btn-light-primary waves-effect waves-light']");
         this.editButton = page.locator("//div//button[@class = 'btn btn-shadow btn-secondary text-uppercase' and contains(text(), 'Edit')]");
-        //this.updateButton = page.locator("//span[contains(text(), 'Update Task')]");
         this.deleteButton = page.locator("//td[@class= 'sorting_1' and contains(text(), 'Write test script')]//button[@class = 'btn icon-btn btn-sm btn-light-danger waves-effect waves-light delete']");
-        //this.confirmDeleteButton = page.locator("//span[contains(text(), 'Confirm')]");
+
     }
 }
