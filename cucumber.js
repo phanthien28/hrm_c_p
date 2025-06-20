@@ -5,10 +5,17 @@ module.exports = {
       requireModule: ['ts-node/register'],
       require: ['src/step-definitions/**/*.ts', 'src/support/**/*.ts'],
       paths: ['src/features/**/*.feature'],
+      paths: ['src/features/**/*.feature'],
       format: [
         '@cucumber/pretty-formatter',
-        'html:reports/cucumber-report.html'
+        //'html:reports/cucumber-report.html',
+        'json:reports/cucumber-report.json',
+        'allure-cucumberjs/reporter'
       ],
+      formatOptions: { 
+        resultsDir: "allure-results"
+      },
+        
       //publishQuiet: true,
       parallel: 1,
       // parallelType: "features",
