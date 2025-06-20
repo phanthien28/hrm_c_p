@@ -33,7 +33,7 @@ pipeline {
                 sh 'mkdir -p allure-results'
                 
                 // Run tests and generate Allure results
-                sh 'npx cucumber-js'
+                sh 'npm run test'
             }
         }
         
