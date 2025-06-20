@@ -1,0 +1,4 @@
+username,password,expected_result
+mikegay123,123456,user redirects dashboard
+mikegay123,wrong_password,system display error message
+mikegay123,,display alert
