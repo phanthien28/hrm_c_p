@@ -14,8 +14,8 @@ Given('user is logged in', async function () {
 Given('user has access to the task management system', async function () {
     basePage = new BasePage(this.page);
     await basePage.selectSideMenuOfTheLeft('Tasks');
-    await this.page.waitForURL('**/my-tasks-list', { timeout: 15000 });
-    await expect(this.page).toHaveURL(/.*\/erp\/my-tasks-list/);
+    await this.page.waitForURL('**/tasks-list', { timeout: 15000 });
+    await expect(this.page).toHaveURL(/.*\/erp\/tasks-list/);
 });
 
 //create task

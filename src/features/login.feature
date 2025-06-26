@@ -11,9 +11,9 @@ Feature: Login system
   
     Examples: Login with different credentials
         | username             | password         | expected_result                |
-        | mikegay123           | 123456           | user redirects dashboard       |
-        | mikegay123           | wrong_password   | system display error message   |
-        | mikegay123           |                  | display alert                  |
+        | johncarter           | 123456           | user redirects dashboard       |
+        | johncarter           | wrong_password   | system display error message   |
+        | johncarter           |                  | display alert                  |
 
     Scenario Outline: Login with only username
         When user enter username "<username>"
@@ -22,7 +22,7 @@ Feature: Login system
 
     Examples:
         | username             | expected_result           |
-        | mikegay123           | display input password    |
+        | johncarter           | display input password    |
         |                      | display alert1            |
 
     Scenario Outline: Login with invalid credentials
