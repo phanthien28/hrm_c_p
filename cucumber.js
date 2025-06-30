@@ -10,11 +10,11 @@ module.exports = {
         '@cucumber/pretty-formatter',
         //'html:reports/cucumber-report.html',
         'json:reports/cucumber-report.json',
-        //'allure-cucumberjs/reporter'
+        'allure-cucumberjs/reporter'
       ],
-      // formatOptions: { 
-      //   resultsDir: "allure-results"
-      // },
+      formatOptions: { 
+        resultsDir: "allure-results"
+      },
         
       //publishQuiet: true,
       parallel: 1,
