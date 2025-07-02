@@ -11,10 +11,10 @@ Feature: Task Management
       | Write test script        | 05-06-2025  | 06-06-2025  | 8              | Project Testing       | Draft the final detailed report for the project submission now.| This is a detailed project report    |
     Then task should be saved successfully and dispalyed message
 
-  # Scenario: Edit task
-  #   When changes Title of task to "Complete write test script" and changes Estimated hour to "10"
-  #   Then the task should be updated successfully and displayed message
+  Scenario: Edit task
+    When changes Title of task to "Complete write test script" and changes Estimated hour to "10"
+    Then the task should be updated successfully and displayed message
 
   Scenario: Delete task
-    When the user deletes the task "Write test script"
+    When the user deletes the task "Complete write test script"
     Then the task should be deleted successfully and displayed message

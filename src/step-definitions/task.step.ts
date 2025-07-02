@@ -29,17 +29,17 @@ Then('task should be saved successfully and dispalyed message', async function (
 });
 
 //edit task
-// When('changes Title of task to {string} and changes Estimated hour to {string}', async function (title: string, hours: string) {
-//     await taskPage.editTask(title, hours);
-// });
+When('changes Title of task to {string} and changes Estimated hour to {string}', async function (title: string, hours: string) {
+    await taskPage.editTask(title, hours);
+});
 
-// Then('the task should be updated successfully and displayed message', async function () {
-//     await taskPage.verifyToastMessage('Task updated.');
-// });
+Then('the task should be updated successfully and displayed message', async function () {
+    await taskPage.verifyToastMessage('Task updated.');
+});
 
 
 //delete task
-When('the user deletes the task "Write test script"', async function () {
+When('the user deletes the task "Complete write test script"', async function () {
     await taskPage.deleteTask();
 });
 

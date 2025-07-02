@@ -37,7 +37,7 @@ export class TaskSelector {
 
         this.viewDetailButton = page.locator("//td[@class= 'sorting_1' and contains(text(), 'Write test script')]//button[@class = 'btn icon-btn btn-sm btn-light-primary waves-effect waves-light']");
         this.editButton = page.locator("//div//button[@class = 'btn btn-shadow btn-secondary text-uppercase' and contains(text(), 'Edit')]");
-        this.deleteButton = page.locator("//td[@class= 'sorting_1' and contains(text(), 'Write test script')]//button[@class = 'btn icon-btn btn-sm btn-light-danger waves-effect waves-light delete']");
+        this.deleteButton = page.locator("//td[@class= 'sorting_1' and contains(text(), 'Complete write test script')]//button[@class = 'btn icon-btn btn-sm btn-light-danger waves-effect waves-light delete']");
 
     }
 }

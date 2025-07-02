@@ -105,7 +105,7 @@ export class TaskPage extends BasePage {
         await this.clickEditButton();
         await this.enterTitle(title);
         await this.enterEstimatedHours(hours);
-        await this.clickSubmitButton('Update');
+        await this.clickSubmitButton('Update Task');
         await waitForLoad(this.page);
     }
 
