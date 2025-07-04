@@ -28,7 +28,7 @@ export class BasePage {
     // Validate current URL contains expected path
     async validateUrl(expectedPath: string) {
         const cleanPath = expectedPath.replace(/\*\*/g, '');
-        await this.page.waitForURL(`**${cleanPath}`, { timeout: 60000 });
+        await this.page.waitForURL(`**${cleanPath}`, { timeout: 30000 });
         const currentUrl = this.page.url();
         expect(currentUrl).toContain(cleanPath);
 }
