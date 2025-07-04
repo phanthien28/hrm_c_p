@@ -80,7 +80,7 @@ pipeline {
                 ]
                 def response = httpRequest(
                     httpMode: 'POST',
-                    url: 'https://a05a-118-70-103-147.ngrok-free.app/webhook', // change to URL webhook/ngrok of you
+                    url: 'https://36ad-2402-800-6233-81d3-fd55-76cb-905b-3bd2.ngrok-free.app/webhook', // change to URL webhook/ngrok of you
                     contentType: 'APPLICATION_JSON',
                     requestBody: groovy.json.JsonOutput.toJson(payload)
                 )
