@@ -1,11 +1,20 @@
 pipeline {
     agent any
     
+    parameters {
+        booleanParam(
+            name: 'HEADLESS',
+            defaultValue: true,
+            description: 'Run browser in headless mode'
+        )
+    }
+    
     environment {
         HRM_URL = "${env.URL}"
         HRM_USERNAME = "${env.USERNAME}" 
         HRM_PASSWORD = credentials('hrm-password')
         ALLURE_REPORT_URL = "${env.BUILD_URL}allure" // Create URL for Allure report
+        HEADLESS = "${params.HEADLESS ?: 'true'}"
     }
     // 1. install environment
     tools {

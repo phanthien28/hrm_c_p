@@ -11,8 +11,10 @@ let isFirstRun = true;
 setDefaultTimeout(60 * 1000);
 
 BeforeAll(async function() {
+    const isHeadless = process.env.HEADLESS === 'true' || process.env.CI === 'true';
+    
     browser = await chromium.launch({
-        headless: true, // Set to true for headless mode
+        headless: isHeadless,
         args: [
             '--start-maximized',
             '--window-size=1920,1080',

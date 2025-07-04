@@ -41,8 +41,8 @@ export class Authentication extends BasePage {
         await this.loginPage.enterPassword(password);
         await this.loginPage.clickLoginButton();
         
-        await this.page.waitForLoadState('load', { timeout: 40000 });
-        await this.page.waitForLoadState('networkidle', { timeout: 40000 });
+        await this.page.waitForLoadState('load', { timeout: 60000 });
+        await this.page.waitForLoadState('networkidle', { timeout: 60000 });
 
         
         await this.validateUrl('/erp/desk');
