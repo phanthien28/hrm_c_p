@@ -1,3 +1,4 @@
+const { default: PrettyFormatter } = require('@cucumber/pretty-formatter');
 const path = require('path');
 
 module.exports = {

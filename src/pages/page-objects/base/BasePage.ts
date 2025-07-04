@@ -6,6 +6,7 @@ export class BasePage {
     public baseUrl: string;
     readonly toastMessage: Locator;
     readonly submitButton: (buttonText: string)  => Locator;
+    readonly displayInList: (titleText: string)  => Locator;
     //pending
    // protected saveButton: string = "//span[contains(text(), 'Save')]";
 
@@ -14,6 +15,7 @@ export class BasePage {
         this.baseUrl = process.env.BASE_URL || 'https://hrm.anhtester.com'; // Fallback URL if env not set
         this.toastMessage = this.page.locator('//div[contains(@class,"toast-message")]');
         this.submitButton = (buttonText: string) => page.locator(`//button[@type='submit' and @class = 'btn btn-primary ladda-button']//span[contains(text(),'${buttonText}')]`);
+        this.displayInList = (titleText: string) => page.locator(`//td[@class = 'sorting_1' and contains(text(), '${titleText}')]`);
     }
 
     
@@ -59,4 +61,10 @@ export class BasePage {
         await this.submitButton(buttonText).click();
         await this.waitForPageLoad();
     }
+
+    async verifyDisplayedInList(titleText: string) {
+        await expect(this.displayInList(titleText)).toBeVisible();
+        await expect(this.displayInList(titleText)).toHaveText(titleText);
+    }
 }
+    

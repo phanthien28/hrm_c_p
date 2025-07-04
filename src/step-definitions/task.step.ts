@@ -24,8 +24,9 @@ When('user creates a new task with the following details:', async function (data
     await taskPage.createNewTask(taskData);
 });
 
-Then('task should be saved successfully and dispalyed message', async function () {
+Then('task should be saved successfully and dispalyed message and have in list task', async function () {
     await taskPage.verifyToastMessage('Task added.');
+    await taskPage.verifyDisplayedInList('Write test script');
 });
 
 //edit task
@@ -33,7 +34,7 @@ When('changes Title of task to {string} and changes Estimated hour to {string}',
     await taskPage.editTask(title, hours);
 });
 
-Then('the task should be updated successfully and displayed message', async function () {
+Then('the task should be updated successfully and displayed message and have in list task', async function () {
     await taskPage.verifyToastMessage('Task updated.');
 });
 
@@ -43,6 +44,6 @@ When('the user deletes the task "Complete write test script"', async function ()
     await taskPage.deleteTask();
 });
 
-Then('the task should be deleted successfully and displayed message', async function () {
+Then('the task should be deleted successfully and displayed message and not have in list task', async function () {
     await taskPage.verifyToastMessage('Task deleted.');
 });

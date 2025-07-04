@@ -9,12 +9,12 @@ Feature: Task Management
     When user creates a new task with the following details:
       | Title                    | Start Date  | End Date    | Estimated Hour | Project Name          | Summary                                                        | Description                          |
       | Write test script        | 05-06-2025  | 06-06-2025  | 8              | Project Testing       | Draft the final detailed report for the project submission now.| This is a detailed project report    |
-    Then task should be saved successfully and dispalyed message
+    Then task should be saved successfully and dispalyed message and have in list task
 
   Scenario: Edit task
     When changes Title of task to "Complete write test script" and changes Estimated hour to "10"
-    Then the task should be updated successfully and displayed message
+    Then the task should be updated successfully and displayed message and have in list task
 
   Scenario: Delete task
     When the user deletes the task "Complete write test script"
-    Then the task should be deleted successfully and displayed message
+    Then the task should be deleted successfully and displayed message and not have in list task
