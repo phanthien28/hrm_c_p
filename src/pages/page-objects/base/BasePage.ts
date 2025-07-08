@@ -31,9 +31,9 @@ export class BasePage {
         await this.page.waitForURL(`**${cleanPath}`, { timeout: 30000 });
         const currentUrl = this.page.url();
         expect(currentUrl).toContain(cleanPath);
-}
+    }
 
-     //Wait for page load state
+    //Wait for page load state
     async waitForPageLoad() {
         await this.page.waitForLoadState('load');
     }
