@@ -25,6 +25,7 @@ When('user changes the First Name and City and user clicks the Save button', asy
     await profilePage.updateProfile(profileData);
 })
 
+
 Then('the profile information should be updated successfully', async function () {
     await profilePage.verifyToastMessage('Employee basic info updated.');
 })
